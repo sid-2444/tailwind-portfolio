@@ -1,32 +1,26 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const form = useRef();
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setStatus("");
 
     emailjs
       .sendForm(
-        "service_g21gcpe",      // 🔥 YOUR SERVICE ID
-        "template_9tgd7bi",      // 🔥 YOUR TEMPLATE ID
+        "service_g21gcpe",   // 🔥 your service ID
+        "template_9tgd7bi",  // 🔥 your template ID (replace this)
         form.current,
-        "YHtxXgfiowjgbbBeQ"      // 🔥 YOUR PUBLIC KEY
+        "YHtxXgfiowjgbbBeQ"    // 🔥 your public key
       )
       .then(
         () => {
-          setStatus("Message sent successfully!");
-          setLoading(false);
-          form.current.reset();
+          alert("Message sent successfully ✅");
         },
-        () => {
-          setStatus("Failed to send message. Try again.");
-          setLoading(false);
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send ❌");
         }
       );
   };
@@ -34,79 +28,45 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 px-6 transition-all duration-500 
-      bg-[#e8e6df] text-[#1a1a1a] 
-      dark:bg-[#0a0a0a] dark:text-white"
+      className="py-20 text-center bg-[#e7e3da] dark:bg-[#111] transition"
     >
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
-        <p className="mb-10 text-gray-600 dark:text-gray-400">
-          Let’s build something amazing together
-        </p>
+      <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
 
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          className="space-y-6 backdrop-blur-xl p-8 rounded-2xl 
-          bg-white/40 dark:bg-white/5 
-          border border-white/20 dark:border-white/10 
-          shadow-xl"
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="max-w-md mx-auto flex flex-col gap-4"
+      >
+        <input
+          type="text"
+          name="user_name"
+          placeholder="Your Name"
+          required
+          className="p-3 rounded bg-white dark:bg-[#1a1a1a]"
+        />
+
+        <input
+          type="email"
+          name="user_email"
+          placeholder="Your Email"
+          required
+          className="p-3 rounded bg-white dark:bg-[#1a1a1a]"
+        />
+
+        <textarea
+          name="message"
+          placeholder="Message"
+          required
+          className="p-3 rounded bg-white dark:bg-[#1a1a1a]"
+        />
+
+        <button
+          type="submit"
+          className="bg-[#c9a75d] text-black py-3 rounded-full"
         >
-          {/* NAME */}
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Your Name"
-            required
-            className="w-full p-3 rounded-lg 
-            bg-white/60 dark:bg-[#111] 
-            border border-gray-300 dark:border-gray-700 
-            focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-
-          {/* EMAIL */}
-          <input
-            type="email"
-            name="from_email"
-            placeholder="Your Email"
-            required
-            className="w-full p-3 rounded-lg 
-            bg-white/60 dark:bg-[#111] 
-            border border-gray-300 dark:border-gray-700 
-            focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-
-          {/* MESSAGE */}
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows="5"
-            required
-            className="w-full p-3 rounded-lg 
-            bg-white/60 dark:bg-[#111] 
-            border border-gray-300 dark:border-gray-700 
-            focus:outline-none focus:ring-2 focus:ring-purple-500"
-          ></textarea>
-
-          {/* BUTTON */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 rounded-lg font-semibold 
-            bg-gradient-to-r from-purple-500 to-pink-500 
-            hover:scale-105 transition-all duration-300 text-white shadow-lg"
-          >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
-
-          {/* STATUS MESSAGE */}
-          {status && (
-            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300">
-              {status}
-            </p>
-          )}
-        </form>
-      </div>
+          Send Message
+        </button>
+      </form>
     </section>
   );
 }

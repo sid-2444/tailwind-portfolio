@@ -1,29 +1,31 @@
 export default function Navbar({ darkMode, setDarkMode }) {
   return (
-    <nav className="fixed w-full top-0 z-50 backdrop-blur-xl bg-white/40 dark:bg-black/30 border-b border-white/10 dark:border-white/5 transition-all duration-500">
+    <nav className="fixed w-full z-50 backdrop-blur-md 
+    bg-white/70 dark:bg-black/60 
+    border-b border-black/10 dark:border-white/10">
+
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        
-        <h1 className="text-xl font-bold tracking-wide text-[#b8893c]">
+
+        <h1 className="text-lg font-bold text-[#c9a75d]">
           Siddhanth.dev
         </h1>
 
-        <div className="flex items-center gap-6 text-sm font-medium">
-          <a href="#about" className="hover:text-[#c9a75d] transition">
-            About
-          </a>
-          <a href="#projects" className="hover:text-[#c9a75d] transition">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-[#c9a75d] transition">
-            Contact
-          </a>
+        <div className="flex items-center gap-6 text-sm">
 
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+
+          {/* TOGGLE */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="ml-4 px-4 py-2 rounded-full bg-[#1a1a1a] text-white dark:bg-[#c9a75d] dark:text-black transition-all duration-500 shadow-lg"
+            className="px-3 py-2 rounded-full 
+            bg-black text-white 
+            dark:bg-white dark:text-black transition"
           >
             {darkMode ? "☀️" : "🌙"}
           </button>
+
         </div>
       </div>
     </nav>

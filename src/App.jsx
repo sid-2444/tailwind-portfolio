@@ -1,38 +1,41 @@
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
+import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
+  // Load saved theme
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    const saved = localStorage.getItem("theme");
+    if (saved) setDarkMode(saved === "dark");
+  }, []);
+
+  // Apply theme
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
   return (
-    <div className="transition-all duration-700 bg-[#e8e6df] text-[#1a1a1a] dark:bg-[#0b0b0c] dark:text-white">
+    <div className="min-h-screen transition-colors duration-500 
+    bg-[#f1efe9] text-[#1a1a1a] 
+    dark:bg-[#0b0b0c] dark:text-[#e5e5e5]">
+
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <Hero />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Contact />
+      <Footer />
 
-      <section className="bg-[#e2dfd6] dark:bg-[#121212] transition-all duration-700">
-        <About />
-      </section>
-
-      <section className="bg-[#dcd8cf] dark:bg-[#0f172a] transition-all duration-700">
-        <Projects />
-      </section>
-
-      <section className="bg-[#e2dfd6] dark:bg-[#121212] transition-all duration-700">
-        <Contact />
-      </section>
     </div>
   );
 }

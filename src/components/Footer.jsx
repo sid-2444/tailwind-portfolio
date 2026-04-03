@@ -1,8 +1,9 @@
-// components/Footer.jsx
 export default function Footer() {
   return (
-    <footer className="text-center py-6 bg-gray-100 dark:bg-gray-800 text-sm text-gray-500 dark:text-gray-400">
-      © {new Date().getFullYear()} Ayaan Khan. All rights reserved.
+    <footer className="py-6 text-center bg-[#f1efe9] dark:bg-[#0b0b0c] border-t border-gray-300 dark:border-[#222] transition">
+      <p className="text-gray-600 dark:text-gray-400">
+        © 2026 Siddhanth
+      </p>
     </footer>
   );
 }
