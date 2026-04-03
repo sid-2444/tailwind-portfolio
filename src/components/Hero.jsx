@@ -1,30 +1,41 @@
+import { motion } from "framer-motion";
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden transition-all duration-700
-    bg-gradient-to-br from-[#e8e6df] via-[#dcd8cf] to-[#cfcac0]
-    dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#020617]">
+    <section className="min-h-screen flex items-center justify-center px-6 
+    bg-[#dcd8cd] dark:bg-[#0f172a] transition-all duration-700">
 
-      {/* Ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(200,170,90,0.15),transparent_60%)]"></div>
+      <div className="flex flex-col md:flex-row items-center gap-12 max-w-5xl">
 
-      <div className="relative z-10 px-6">
-        <h1 className="text-5xl md:text-6xl font-bold mb-4">
-          Siddhanth
-        </h1>
+        {/* PROFILE IMAGE */}
+        <motion.img
+          src="https://media.licdn.com/dms/image/v2/D5603AQF0XlXC3YhadA/profile-displayphoto-scale_400_400/B56ZqYT1l_HYAk-/0/1763491930750?e=1776902400&v=beta&t=j7JMMrbSQx3Ou5Pryt1wKgjblSQpWs0r5RJS71f75Zs"   // 🔥 put your image in public folder
+          alt="Profile"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full 
+          border-4 border-[#c9a75d] shadow-2xl"
+        />
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-          Building premium web experiences with modern tech
-        </p>
+        {/* TEXT CONTENT */}
+        <div className="text-center md:text-left">
+          <h1 className="text-5xl font-bold text-[#1a1a1a] dark:text-white">
+            Siddhanth
+          </h1>
 
-        <a
-          href="#projects"
-          className="inline-block px-6 py-3 rounded-full 
-          bg-gradient-to-r from-[#c9a75d] to-[#b8893c] 
-          text-black font-medium shadow-lg 
-          hover:scale-105 transition duration-300"
-        >
-          View Projects
-        </a>
+          <p className="mt-4 text-gray-700 dark:text-gray-400 text-lg">
+            Building premium web experiences with modern tech
+          </p>
+
+          <button
+            className="mt-6 px-6 py-3 rounded-xl font-semibold 
+            bg-gradient-to-r from-[#c9a75d] to-[#b8893c] 
+            text-black shadow-lg hover:scale-105 transition"
+          >
+            View Projects
+          </button>
+        </div>
       </div>
     </section>
   );
