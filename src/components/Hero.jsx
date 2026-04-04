@@ -6,7 +6,7 @@ export default function Hero() {
     bg-[#f1efe9] dark:bg-[#0b0b0c] transition">
 
       <img
-        src="https://your-image-link.jpg"
+        src="https://media.licdn.com/dms/image/v2/D5603AQF0XlXC3YhadA/profile-displayphoto-scale_400_400/B56ZqYT1l_HYAk-/0/1763491930750?e=1776902400&v=beta&t=j7JMMrbSQx3Ou5Pryt1wKgjblSQpWs0r5RJS71f75Zs"
         alt="profile"
         className="w-32 h-32 rounded-full mb-6 border-4 border-[#c9a75d]"
       />
@@ -24,20 +24,20 @@ export default function Hero() {
           View Projects
         </a>
 
-        <a href="/resume.pdf" download className="px-6 py-3 border border-[#c9a75d] rounded-full">
+        <a href="resume-sid.pdf" download className="px-6 py-3 border border-[#c9a75d] rounded-full">
           Resume
         </a>
       </div>
 
       {/* SOCIALS */}
       <div className="flex gap-6 mt-8 text-xl">
-        <a href="https://github.com/YOUR_USERNAME" target="_blank">
+        <a href="https://github.com/sid-2444" target="_blank">
           <FaGithub />
         </a>
-        <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank">
+        <a href="https://www.linkedin.com/in/siddhanth-samarai-43794b2b0/" target="_blank">
           <FaLinkedin />
         </a>
-        <a href="https://instagram.com/YOUR_USERNAME" target="_blank">
+        <a href="https://www.instagram.com/_disisid_/?hl=en" target="_blank">
           <FaInstagram />
         </a>
       </div>
